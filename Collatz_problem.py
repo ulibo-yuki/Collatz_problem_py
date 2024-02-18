@@ -9,7 +9,6 @@ while True:
     datetime_now = datetime.datetime.now().strftime('%m_%d_%H:%M:%S')
     log_file_name = f"log_{datetime_now}"
     if getattr(sys, 'frozen', False):
-        # parent_path = os.path.dirname(sys.executable)
         os.makedirs(f"{os.path.dirname(sys.executable)}/csv_files/{log_file_name}", exist_ok=True)
         log_file_name = f"{os.path.dirname(sys.executable)}/csv_files/{log_file_name}/{log_file_name}.csv"
         with open(log_file_name, 'w') as f:
@@ -40,7 +39,6 @@ while True:
     print(f"\n{n}になりました")
     #グラフ
     input_csv = pd.read_csv(log_file_name)
-    # save_path = f"{os.path.dirname(log_file_name)}"
     plt.plot(input_csv["time"], input_csv["value"])
     plt.xlabel("time")
     plt.ylabel("value")
