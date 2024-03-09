@@ -21,7 +21,7 @@ while True:
     #演算
     print("値を入力してください")
     n = int(input())
-    repat = False
+    repeat = False
     count = 1
     with open(log_file_name, 'a') as f:
         f.write(str(count) + "," + str(n) + "\n")
