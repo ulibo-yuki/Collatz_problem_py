@@ -11,13 +11,11 @@ while True:
     if getattr(sys, 'frozen', False):
         os.makedirs(f"{os.path.dirname(sys.executable)}/csv_files/{log_file_name}", exist_ok=True)
         log_file_name = f"{os.path.dirname(sys.executable)}/csv_files/{log_file_name}/{log_file_name}.csv"
-        with open(log_file_name, 'w') as f:
-            f.write("time,value\n")
     else:
         os.makedirs(f"csv_files/{log_file_name}", exist_ok=True)
         log_file_name = f"csv_files/{log_file_name}/{log_file_name}.csv"
-        with open(log_file_name, 'w') as f:
-            f.write("time,value\n")
+    with open(log_file_name, 'w') as f:
+        f.write("time,value\n")
     #演算
     print("値を入力してください")
     n = int(input())
