@@ -36,13 +36,22 @@ while True:
             f.write(str(count) + "," + str(n) + "\n")
             print("\r" + str(count) + "回書き込み", end="")
     print(f"\n{n}になりました")
-    #グラフ
+
+    #csvファイルのパス
     input_csv = pd.read_csv(log_csv_file_path)
+
+    # lorテキストの書き込み
     with open(f"{os.path.dirname(log_csv_file_path)}/operation_log.txt", 'a') as f:
         f.write(f"演算回数:{count}\n最大値:{input_csv['value'].max()}\n最小値:{input_csv['value'].min()}")
-    plt.plot(input_csv["time"], input_csv["value"])
-    plt.xlabel("time")
-    plt.ylabel("value")
+
+    # グラフ
+    first_column_data = input_csv[input_csv.keys()[0]]
+    second_culumn_data = input_csv[input_csv.keys()[1]]
+
+    plt.xlabel(input_csv.keys()[0])
+    plt.ylabel(input_csv.keys()[1])
+
+    plt.plot(first_column_data, second_culumn_data, linestyle='solid')
     plt.savefig(f"{os.path.dirname(log_csv_file_path)}/graph_{date_now}.png", format="png", dpi=300)
     print(f"{os.path.dirname(log_csv_file_path)}にグラフ画像を保存しました。")
     print("グラフを表示しますか?(y/n)")
